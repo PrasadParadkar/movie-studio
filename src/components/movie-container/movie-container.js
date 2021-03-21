@@ -60,7 +60,8 @@ const MovieContainer = () => {
     async function fetchMovies() {
       const data = await fetch('https://ghibliapi.herokuapp.com/films')
         .then(resp => resp.json())
-        .then(data => data);
+        .then(data => data)
+        .catch(err => { throw new Error('Something went wrong') });
       setPagination({ ...pagination, moviesData: data });
     }
     fetchMovies();
