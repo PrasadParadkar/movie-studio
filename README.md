@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 Clone the project in your machine using git clone.\
-Runs npm install OR npm i to download necessary dependancies.\
+Runs npm install OR npm i to download necessary dependancies.
 
 ## Available Scripts
 
