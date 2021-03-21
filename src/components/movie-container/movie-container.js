@@ -3,7 +3,9 @@ import Pagination from '../pagination/pagination';
 import './movie-container.css';
 
 const MovieContainer = () => {
+  //Maintaining state for movies data
   const [movies, setMovies] = useState([]);
+  //Maintaining state for pagination purposes
   const [pagination, setPagination] = useState({
     totalPages: 0,
     limit: 8,
@@ -13,6 +15,7 @@ const MovieContainer = () => {
     lastPage: false
   });
 
+  //Event handler for Next page button click event
   const nextPageHandler = () => {
     setPagination((prevState) => {
       if (prevState.currentPage + 1 >= pagination.totalPages) {
@@ -27,6 +30,7 @@ const MovieContainer = () => {
     });
   }
 
+  //Event handler for Previous page button click event
   const prevPageHandler = () => {
     setPagination((prevState) => {
       if (prevState.currentPage - 1 < 0) {
@@ -41,6 +45,7 @@ const MovieContainer = () => {
     });
   }
 
+  //Event handler for page selection event
   const changePageHandler = (index) => {
     setPagination({
       ...pagination,
@@ -50,6 +55,7 @@ const MovieContainer = () => {
     });
   }
 
+  //useEffect to fetch data from API
   useEffect(() => {
     async function fetchMovies() {
       const data = await fetch('https://ghibliapi.herokuapp.com/films')
@@ -60,6 +66,7 @@ const MovieContainer = () => {
     fetchMovies();
   }, []);
 
+  //useEffect to set movies data to display on the screen 
   useEffect(() => {
     const totalPages = Math.ceil(pagination.moviesData.length / pagination.limit);
     setPagination({ ...pagination, totalPages })
